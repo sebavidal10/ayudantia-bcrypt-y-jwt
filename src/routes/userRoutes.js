@@ -6,7 +6,7 @@ const {
   createUser,
   updateUser,
   deleteUser,
-} = require('../consultas/users');
+} = require('../models/users');
 
 router.get('', async (req, res) => {
   try {

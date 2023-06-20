@@ -3,7 +3,7 @@ const pool = require('./db');
 const getPosts = async () => {
   const query = 'SELECT * FROM posts';
   try {
-    const { rows } = pool.query(query);
+    const { rows } = await pool.query(query);
     return rows;
   } catch (error) {
     throw new Error(error);
@@ -13,7 +13,7 @@ const getPosts = async () => {
 const getPostById = async (id) => {
   const query = 'SELECT * FROM posts WHERE id = $1';
   try {
-    const response = pool.query(query, [id]);
+    const response = await pool.query(query, [id]);
     return response.rows;
   } catch (error) {
     throw new Error(error);
@@ -25,7 +25,7 @@ const createPost = async (post) => {
     'INSERT INTO posts (title, content, user_id) VALUES ($1, $2, $3) RETURNING *';
 
   try {
-    const response = pool.query(query, [
+    const response = await pool.query(query, [
       post.title,
       post.content,
       post.user_id,
@@ -41,7 +41,7 @@ const updatePost = async (id, post) => {
     'UPDATE posts SET title = $1, content = $2 WHERE id = $3 RETURNING *';
 
   try {
-    const response = pool.query(query, [post.title, post.content, id]);
+    const response = await pool.query(query, [post.title, post.content, id]);
     return response.rows;
   } catch (error) {
     throw new Error(error);
@@ -52,7 +52,7 @@ const deletePost = async (id) => {
   const query = 'DELETE FROM posts WHERE id = $1';
 
   try {
-    const response = pool.query(query, [id]);
+    const response = await pool.query(query, [id]);
     return response.rows;
   } catch (error) {
     throw new Error(error);

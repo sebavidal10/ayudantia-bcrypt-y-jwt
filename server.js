@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const postRoutes = require('./src/routes/postRoutes');
 const userRoutes = require('./src/routes/userRoutes');
+const authRoutes = require('./src/routes/authRoutes');
 
 const app = express();
 
@@ -28,3 +29,4 @@ app.get('/', (req, res) => {
 
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
+app.use('/auth', authRoutes);
