@@ -1,4 +1,4 @@
-const pool = require('./db');
+const pool = require('../config/db');
 
 const getPosts = async () => {
   const query = 'SELECT * FROM posts';

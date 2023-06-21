@@ -8,16 +8,10 @@ const authRoutes = require('./src/routes/authRoutes');
 
 const app = express();
 
-// agregar cors
 app.use(cors());
-
-// agregar body parser
 app.use(express.json());
-
-// agregar puerto
 const PORT = process.env.PORT || 3000;
 
-// levantar servidor
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en puerto ${PORT}`);
 });

@@ -1,4 +1,4 @@
-const pool = require('./db');
+const pool = require('../config/db');
 
 const getUsers = async () => {
   const query = 'SELECT * FROM users';
@@ -52,10 +52,10 @@ const deleteUser = async (id) => {
   }
 };
 
-const getUserByEmailAndPassword = async (user) => {
-  const query = 'SELECT * FROM users WHERE name = $1 AND password = $2';
+const getUserByName = async (name) => {
+  const query = 'SELECT * FROM users WHERE name = $1';
   try {
-    const response = await pool.query(query, [user.name, user.password]);
+    const response = await pool.query(query, [name]);
     return response.rows;
   } catch (error) {
     throw new Error(error);
@@ -68,5 +68,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  getUserByEmailAndPassword,
+  getUserByName,
 };
