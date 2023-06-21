@@ -24,3 +24,5 @@ app.get('/', (req, res) => {
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
 app.use('/auth', authRoutes);
+
+module.exports = app;

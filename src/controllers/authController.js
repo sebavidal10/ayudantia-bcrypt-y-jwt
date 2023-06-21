@@ -20,7 +20,9 @@ const login = async (req, res) => {
         { name: user[0].name, id: user[0].id },
         process.env.JWT_SECRET
       );
-      res.json({ message: 'Usuario logueado correctamente', token });
+      res
+        .status(200)
+        .json({ message: 'Usuario logueado correctamente', token });
     } else {
       throw new Error('Usuario o contraseña incorrectos');
     }
